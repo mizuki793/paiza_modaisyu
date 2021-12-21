@@ -1,0 +1,2 @@
+# paiza_modaisyu
+paizaの問題集を解いたときに置いとく場所
