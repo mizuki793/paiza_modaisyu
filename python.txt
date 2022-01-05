@@ -1,0 +1,92 @@
+#5以上の整数の合計
+#https://paiza.jp/works/mondai/prob60/5_or_more_9
+
+# coding: utf-8
+# 自分の得意な言語で
+# Let's チャレンジ！！
+cnt = int(input())
+list=[]
+for a in range(cnt):
+    list.append(input())
+    
+
+result = int(0)
+
+for b in list:
+    if int(b)>=5:
+        result+=int(b)
+print(result)
+
+
+# coding: utf-8
+# 自分の得意な言語で
+# Let's チャレンジ！！
+#足すか掛けるか Python3編
+#https://paiza.jp/works/mondai/prob60/total_value_9
+cnt = int(input())
+
+result = int(0) 
+for c in range(cnt):
+    line = input()
+    input_num = line.split(' ')
+    num_1 = int(input_num[0])
+    num_2 = int(input_num[1])
+    if num_1 == num_2:
+        tmp = num_1 * num_2
+    else:
+        tmp = num_1 + num_2
+    result += tmp
+
+print(result)
+
+# coding: utf-8
+# 自分の得意な言語で
+# Let's チャレンジ！！
+#文字列を切り取る Python3編
+#https://paiza.jp/works/mondai/prob60/substring_9
+
+f_input = input().split()
+s_input = input()
+
+print(s_input[int(f_input[0])-1:int(f_input[1])])
+
+# coding: utf-8
+# 自分の得意な言語で
+# Let's チャレンジ！！
+#指定範囲だけ大文字 Python3編
+#https://paiza.jp/works/mondai/prob60/substring_upper_9
+
+f_input = input().split()
+s_input = input()
+s =int(f_input[0])
+e =int(f_input[1])
+
+print(s_input[:s-1] + s_input[s-1:e].upper() + s_input[e:])
+
+# coding: utf-8
+# 自分の得意な言語で
+# Let's チャレンジ！！
+#文字の重複カウント Python3編
+#https://paiza.jp/works/mondai/prob60/string_count_9
+
+f_input = input()
+str_input = input()
+
+print(str_input.count(f_input))
+
+
+# coding: utf-8
+# 自分の得意な言語で
+# Let's チャレンジ！！
+#文字列の重複カウント Python3編
+#https://paiza.jp/works/mondai/prob60/count_string_9
+
+f_input = input()
+str_input = input()
+
+result=0
+for s in range(len(str_input)-1):
+    if(str_input[s:s+len(f_input)] == f_input):
+        result= result +1
+
+print(result)

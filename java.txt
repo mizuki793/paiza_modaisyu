@@ -40,3 +40,369 @@ public class Main {
          System.out.println(result);    
     }
 }
+
+//指定範囲だけ大文字 Java編
+//https://paiza.jp/works/mondai/prob60/substring_upper_9
+
+import java.util.*;
+
+
+public class Main {
+    public static void main(String[] args) {
+        // 自分の得意な言語で
+        // Let's チャレンジ！！
+        Scanner sc = new Scanner(System.in);
+        int start = sc.nextInt() -1;
+        int end = sc.nextInt() -1;
+        sc.nextLine();
+        String line = sc.nextLine();
+        String result ="";
+        for(int i = 0; i<line.length(); i++){
+            // System.out.println(line.charAt(i));
+            if(start<=i && i<=end ) {
+                String str = String.valueOf(line.charAt(i));
+                result += str.toUpperCase();
+            } else {
+                result += line.charAt(i);
+            }
+        }
+        System.out.println(result);
+    }
+}
+//指定範囲だけ大文字 Java編
+//模範解答
+//https://paiza.jp/works/mondai/prob60/substring_upper_9
+
+import java.util.*;
+
+
+public class Main {
+    public static void main(String[] args) {
+        // 自分の得意な言語で
+        // Let's チャレンジ！！
+        Scanner sc = new Scanner(System.in);
+        int start = sc.nextInt() -1;
+        int end = sc.nextInt() -1;
+        sc.nextLine();
+        String line = sc.nextLine();
+        System.out.println(
+            line.substring(0,start) 
+            + line.substring(start,end).toUpperCase()
+            + line.substring(end)
+        );
+    }
+}
+
+//文字の重複カウント Java編
+//https://paiza.jp/works/mondai/prob60/string_count_9
+import java.util.*;
+
+
+public class Main {
+    public static void main(String[] args) {
+        // 自分の得意な言語で
+        // Let's チャレンジ！！
+        Scanner sc = new Scanner(System.in);
+        String spel = sc.nextLine();
+        String line = sc.nextLine();
+        // System.out.println(spel);
+        // System.out.println(line);
+        int result = 0;
+        for(int i= 0; i<line.length(); i++){
+            // System.out.println(line.charAt(i));
+            if(line.charAt(i) == spel.charAt(0)){
+                result++;
+            }
+        }
+        System.out.println(result);
+    }
+}
+
+
+//「五目並べ（斜め） Java編」採点結果
+//https://paiza.jp/works/mondai/prob60/tic_tac_toe_4
+//答え見たら完全に文字列の比較で出来る物。
+//忘れた頃に復習
+import java.util.*;
+
+
+public class Main {
+    public static void main(String[] args) {
+        // 自分の得意な言語で
+        // Let's チャレンジ！！
+        Scanner sc = new Scanner(System.in);
+        char[][] gomoku = new char[5][5];
+        for(int i=0; i<5; i++){
+            String line = sc.nextLine();
+            for(int j=0; j<5; j++){
+                gomoku[i][j] = line.charAt(j);
+            }
+        }
+        
+        int flg_0 = 0;
+        int flg_1 = 0;
+        char m = gomoku[2][2];
+        int start = 0;
+        int end = 4;
+        if(m != gomoku[0][0]){
+            flg_0++;
+        }
+        if(m == gomoku[0][0]){
+            while(flg_0==0 && start<=3){
+                if(gomoku[start][start]!=gomoku[start+1][start+1]){
+//                    System.out.println("start " + start);
+                    flg_0++;
+                    break;
+                }
+                // System.out.println(start +" flg "+ flg);
+                start++;
+            }
+        }
+        if(m != gomoku[0][4]){
+            flg_1++;
+        }
+        if(m == gomoku[0][4]){
+            start= 0;
+            while(flg_1==0 && start<=3){
+                if(gomoku[start][end]!= gomoku[start+1][end-1]){
+                    flg_1++;
+                    break;
+                }
+                start++;
+                end--;
+            }
+        }
+        if(".".equals(String.valueOf(m))){
+            flg_1++;
+        }
+        // System.out.println("m=" + m+" flg = " + flg_0+" "+flg_1);
+        if(flg_0==0 || flg_1==0){
+            System.out.println(m);
+        } else {
+            System.out.println("D");
+        }
+    }
+}
+
+//「文字列の重複カウント Java編」
+//https://paiza.jp/works/mondai/prob60/count_string_9
+import java.util.*;
+
+
+public class Main {
+    public static void main(String[] args) {
+        // 自分の得意な言語で
+        // Let's チャレンジ！！
+        Scanner sc = new Scanner(System.in);
+        String find = sc.nextLine();
+        String search_line = sc.nextLine(); 
+        // System.out.println(find);
+        // System.out.println(search_line);
+        
+        int result_count=0;
+        for(int i= 0;i<search_line.length();i++){
+            // System.out.println(search_line.substring(i));
+            int res = search_line.substring(i).indexOf(find);
+            // System.out.println(res);
+            if(res == 0){
+                result_count++;
+            }
+        }
+        System.out.println(result_count);
+    }
+}
+
+
+//アルファベット探し
+//https://paiza.jp/works/mondai/prob60/alphabets_large_or_small_9
+//memo:アルファベットは等号で比較できる
+import java.util.*;
+
+
+public class Main {
+    public static void main(String[] args) {
+        // 自分の得意な言語で
+        // Let's チャレンジ！！
+        Scanner sc = new Scanner(System.in);
+        String arfabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        int start = arfabet.indexOf(sc.nextLine());
+        int end = arfabet.indexOf(sc.nextLine())+1;
+        String result ="";
+        int result_num=0;
+        try{
+            String kensaku_line = arfabet.substring(start,end);
+            result_num = kensaku_line.indexOf(sc.nextLine());
+        } catch(Exception e){
+            result_num = -1;
+        }
+
+        if(result_num>=0){
+            result = "true";
+        } else {
+            result = "false";
+        }
+        System.out.println(result);
+    }
+}
+
+//五目並べ Java編
+//https://paiza.jp/works/mondai/prob60/tic_tac_toe_9
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) throws Exception {
+        String result ="";
+        Scanner sc = new Scanner(System.in);
+        String line_0 = sc.nextLine();
+        String line_1 = sc.nextLine();
+        String line_2 = sc.nextLine();
+        String line_3 = sc.nextLine();
+        String line_4 = sc.nextLine();
+        
+        char [][] line_hairetu = new char[5][5];
+        for (int i=0; i<=4; i++){
+            for(int j=0; j<=4; j++){
+                if(i==0){
+                    line_hairetu[i][j] = line_0.charAt(j);
+                } else if(i==1){
+                    line_hairetu[i][j] = line_1.charAt(j);
+                } else if(i==2){
+                    line_hairetu[i][j] = line_2.charAt(j);
+                } else if(i==3){
+                    line_hairetu[i][j] = line_3.charAt(j);
+                } else if(i==4){
+                    line_hairetu[i][j] = line_4.charAt(j);
+                }
+            }
+        }
+        
+        if(result == ""){
+            result = judge(line_0);
+        }
+        if(result == ""){
+            result = judge(line_1);
+        }
+        if(result == ""){
+            result = judge(line_2);
+        }
+        if(result == ""){
+            result = judge(line_3);
+        }
+        if(result == ""){
+            result = judge(line_4);
+        }
+        //縦
+        if(result ==""){
+            result = height(line_hairetu,0);
+        }
+        if(result ==""){
+            result = height(line_hairetu,1);
+        }
+        if(result ==""){
+            result = height(line_hairetu,2);
+        }
+        if(result ==""){
+            result = height(line_hairetu,3);
+        }
+        if(result ==""){
+            result = height(line_hairetu,4);
+        }
+        //斜め
+        if(result ==""){
+            result = left_diagonal(line_hairetu,0);
+        }
+        if(result==""){
+            result = right_diagonal(line_hairetu,4);
+        }
+        if(result==""){
+            result = "D";
+        }
+        System.out.println(result);
+    }
+    
+    private static String judge(String line){
+        String result;
+        if(line.equals("XXXXX")){
+            result = "X";
+        } else if (line.equals("OOOOO")){
+            result = "O";
+        } else {
+            result = "";
+        }
+        return result;
+    }
+    
+    private static String height(char hairetu[][],int num){
+        String line ="";
+        String result="";
+        for(int k =0;k<=4;k++){
+            char tmp = hairetu[k][num];
+            line += tmp;
+        }
+        result = judge(line);
+        return result;
+    }
+    
+    private static String left_diagonal(char hairetu[][],int num){
+        String line ="";
+        String result ="";
+        for (int l=0; l<=4; l++){
+            char tmp = hairetu[l][num];
+            line += tmp;
+            num++;
+        }
+        result = judge(line);
+        return result;
+    }
+    
+        private static String right_diagonal(char hairetu[][],int num){
+        String line ="";
+        String result ="";
+        for (int l=0; l<=4; l++){
+            char tmp = hairetu[l][num];
+            line += tmp;
+            num--;
+        }
+        result = judge(line);
+        return result;
+    }
+}
+
+
+
+//「文字と整数の組のソート Java編」採点結果
+//https://paiza.jp/works/mondai/prob60/sort_asc_9
+//hashmap使えばこんなにfor使わなくて済んだ
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) throws Exception {
+        Scanner sc = new Scanner(System.in);
+        int num = sc.nextInt();
+        
+        String[][] kakuno = new String[num][2];
+        sc.nextLine();
+        int kaisuu = 3;
+        for (int i= 0; i<num; i++){
+            String line = sc.nextLine();
+            String alp = String.valueOf(line.charAt(0));
+            String tmp  = String.valueOf(line.substring(2,line.length()));
+//            System.out.println(tmp);
+            kakuno[i][0] = alp;
+            kakuno[i][1] = tmp;
+            
+        }
+        Integer[] kazu = new Integer[num];
+        for (int j = 0; j<num;j++){
+            kazu[j] = Integer.parseInt(kakuno[j][1]);
+        } 
+        Arrays.sort(kazu);
+        for (int z = 0; z<num; z++) {
+            int zero = 0;
+            while(kazu[z] != Integer.parseInt(kakuno[zero][1])){
+                zero++;
+            }
+            System.out.println(kakuno[zero][0]);
+        }
+    }
+}
